@@ -1,0 +1,27 @@
+{
+  "name": "todolistAPI",
+  "version": "1.0.0",
+  "description": "MP3 for CS498RK Fall 2017",
+  "authors": [
+    "Pranavi Yalamanchili <pyalama2@illinois.edu>"
+  ],
+  "scripts": {
+    "start": "nodemon --exec node server.js"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pranaviy/MP3.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.0",
+    "nodemon": "^1.11.0"
+  }
+}
