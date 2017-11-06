@@ -14,7 +14,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "OK",
                      data: user
                     }
@@ -32,7 +32,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "OK"}
                 );
             }
@@ -52,7 +52,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "Got specific user",
                      data: user
                     }
@@ -69,7 +69,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "Replaced specific user"}
                 );
             }
@@ -78,9 +78,16 @@ module.exports = function (router) {
     
     userIdRoute.delete(function(req, res) {
         User.remove({_id: req.params.id}, function(err, user) {
-            if (err)
-                res.send(err);
-            res.json({ message: 'User successfully deleted' });
+            if (err) {
+                res.status(404).send(
+                    {message: err}
+                );
+            }
+            else {
+                res.status(201).send(
+                    {message: "User successfully deleted"}
+                );
+            }
         });
     });
     

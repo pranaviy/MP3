@@ -15,7 +15,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "OK",
                      data: task
                     }
@@ -33,7 +33,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "OK"}
                 );
             }
@@ -53,7 +53,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "Got specific task",
                      data: task
                     }
@@ -70,7 +70,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "Replaced specific task"}
                 );
             }
@@ -85,7 +85,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(200).send(
+                res.status(201).send(
                     {message: "Task successfully deleted"}
                 );
             }
