@@ -14,7 +14,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(201).send(
+                res.status(200).send(
                     {message: "OK",
                      data: user
                     }
@@ -52,7 +52,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(201).send(
+                res.status(200).send(
                     {message: "Got specific user",
                      data: user
                     }
@@ -69,7 +69,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(201).send(
+                res.status(200).send(
                     {message: "Replaced specific user"}
                 );
             }
@@ -84,7 +84,7 @@ module.exports = function (router) {
                 );
             }
             else {
-                res.status(201).send(
+                res.status(200).send(
                     {message: "User successfully deleted"}
                 );
             }
