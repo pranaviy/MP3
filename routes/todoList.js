@@ -6,7 +6,28 @@ module.exports = function (router) {
     var taskRoute = router.route('/tasks');
     
     taskRoute.get(function(req, res) {
-        Task.find({}, function(err, task) {
+        
+        console.log(req.query);
+        
+        par = {};
+        if(req.query.limit) {
+            par.limit  = JSON.parse(req.query.limit);
+        }
+        else {
+            par.limit = 100;
+        }
+        if(req.query.sort) {
+            par.sort = JSON.parse(req.query.sort);
+        }
+        if(req.query.skip) {
+            par.skip = JSON.parse(req.query.skip);
+        }
+        if(req.query.count) {
+            par.count = JSON.parse(req.query.count);
+        }
+        
+        
+        Task.find({}, [], par, function(err, task) {
             if (err) {
                 res.status(500).send(
                     {message: "error GETing tasks",
@@ -55,7 +76,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "Got specific task",
-                     data: task
+                     data: task.query.and
                     }
                 );
             }
