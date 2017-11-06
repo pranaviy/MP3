@@ -55,7 +55,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "Got specific task",
-                     data: id
+                     data: task
                     }
                 );
             }
