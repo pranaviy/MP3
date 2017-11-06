@@ -24,6 +24,7 @@
     "mongoose": "^4.13.0",
     "node": "^9.0.0",
     "nodemon": "^1.11.0",
+    "python2": "0.0.1",
     "router": "^1.3.2",
     "underscore": "^1.8.3"
   }

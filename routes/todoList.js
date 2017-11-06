@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
 Task = require('../models/tasks.js')
-var _ = require("underscore");
+var _ = require('underscore');
 
 module.exports = function (router) {
     
@@ -18,7 +18,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "OK",
-                     data: task
+                     data: _.where(task, req.param)
                     }
                 );
             }
@@ -56,7 +56,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "Got specific task",
-                     data: _where(task, id)
+                     data: id
                     }
                 );
             }
