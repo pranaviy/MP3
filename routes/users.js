@@ -5,7 +5,28 @@ module.exports = function (router) {
     var userRoute = router.route('/users');
     
     userRoute.get(function(req, res) {
-        User.find({}, function(err, user) {
+    
+        par = {};
+        if(req.query.where) {
+            par.where = JSON.parse(req.query.where);
+        }
+        if(req.query.limit) {
+            par.limit  = JSON.parse(req.query.limit);
+        }
+        else {
+            par.limit = 100;
+        }
+        if(req.query.sort) {
+            par.sort = JSON.parse(req.query.sort);
+        }
+        if(req.query.skip) {
+            par.skip = JSON.parse(req.query.skip);
+        }
+        if(req.query.count) {
+            par.count = JSON.parse(req.query.count);
+        }
+        
+        User.find({}, [], par, function(err, user) {
             if (err) {
                 res.status(500).send(
                     {message: "error GETing users",

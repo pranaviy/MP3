@@ -8,8 +8,12 @@ module.exports = function (router) {
     taskRoute.get(function(req, res) {
         
         console.log(req.query);
+        console.log(req.query.where)
         
         par = {};
+        if(req.query.where) {
+            par.where = JSON.parse(req.query.where);
+        }
         if(req.query.limit) {
             par.limit  = JSON.parse(req.query.limit);
         }
