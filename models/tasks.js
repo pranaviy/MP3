@@ -3,12 +3,15 @@ var mongoose = require('mongoose');
 var TaskSchema = new mongoose.Schema({
   name: {
       type: String,
-      required: 'Please enter the name of the task'
+      required: true
   },
-  description: String,
+  description: {
+      type: String,
+      default: "<No description>"
+  },
   deadline: {
       type: Date,
-      required: "You must enter a deadline"
+      required: true
   },
   completed: {
       type: Boolean,
@@ -16,11 +19,11 @@ var TaskSchema = new mongoose.Schema({
   },
   assignedUser: {
     type: String,
-    default: 'unassigned'
+    default: ""
   },
   assignedUserName: {
     type: String,
-    default: 'unassigned' 
+    default: "unassigned"
   },
   dateCreated: {
     type: Date,

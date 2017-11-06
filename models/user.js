@@ -5,11 +5,11 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: "You must enter your name"
+        required: true
     },
     email: {
         type: String,
-        required: "Please enter a valid email address"
+        required: true
     },
     pendingTasks: [String],
     dateCreated: {

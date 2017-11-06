@@ -7,8 +7,8 @@ module.exports = function (router) {
     
     taskRoute.get(function(req, res) {
         
-        console.log(req.query);
-        console.log(req.query.where)
+        //console.log(req.query);
+        //console.log(req.query.where)
         
         par = {};
         if(req.query.where) {
@@ -51,6 +51,7 @@ module.exports = function (router) {
     
     taskRoute.post(function(req, res) {
         var new_task = new Task(req.body);
+        console.log(new_task);
         new_task.save(function(err, task) {
             if (err) {
                 res.status(500).send(
