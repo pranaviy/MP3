@@ -29,7 +29,7 @@ module.exports = function (router) {
         User.find({}, [], par, function(err, user) {
             if (err) {
                 res.status(500).send(
-                    {message: "error GETing users",
+                    {message: err,
                      data: []
                     }
                 );
@@ -49,12 +49,16 @@ module.exports = function (router) {
         new_user.save(function(err, user) {
             if (err) {
                 res.status(500).send(
-                    {message: err}
+                    {message: err,
+                     data:[]
+                    }
                 );
             }
             else {
                 res.status(201).send(
-                    {message: "OK"}
+                    {message: "OK",
+                     data:user
+                    }
                 );
             }
         });
@@ -86,12 +90,16 @@ module.exports = function (router) {
         User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, user) {
             if (err) {
                 res.status(404).send(
-                    {message: err}
+                    {message: err,
+                     data:[]
+                    }
                 );
             }
             else {
                 res.status(200).send(
-                    {message: "Replaced specific user"}
+                    {message: "Replaced specific user", 
+                     data:user
+                    }
                 );
             }
         });
@@ -101,12 +109,16 @@ module.exports = function (router) {
         User.remove({_id: req.params.id}, function(err, user) {
             if (err) {
                 res.status(404).send(
-                    {message: err}
+                    {message: err, 
+                     data:[]
+                    }
                 );
             }
             else {
                 res.status(200).send(
-                    {message: "User successfully deleted"}
+                    {message: "User successfully deleted",
+                     data:[]
+                    }
                 );
             }
         });

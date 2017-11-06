@@ -34,7 +34,7 @@ module.exports = function (router) {
         Task.find({}, [], par, function(err, task) {
             if (err) {
                 res.status(500).send(
-                    {message: "error GETing tasks",
+                    {message: err,
                      data: []
                     }
                 );
@@ -55,12 +55,16 @@ module.exports = function (router) {
         new_task.save(function(err, task) {
             if (err) {
                 res.status(500).send(
-                    {message: err}
+                    {message: err, 
+                     data:[]
+                    }
                 );
             }
             else {
                 res.status(201).send(
-                    {message: "OK"}
+                    {message: "OK",
+                     data: task
+                    }
                 );
             }
         });
@@ -68,7 +72,6 @@ module.exports = function (router) {
     
     var taskIdRoute = router.route('/tasks/:id');
     
-    //get, put, delete
     taskIdRoute.get(function(req, res) {
         Task.findById(req.params.id, function(err, task) {
             if (err) {
@@ -81,7 +84,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "Got specific task",
-                     data: task.query.and
+                     data: task
                     }
                 );
             }
@@ -92,12 +95,16 @@ module.exports = function (router) {
         Task.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
             if (err) {
                 res.status(404).send(
-                    {message: err}
+                    {message: err,
+                     data: []
+                    }
                 );
             }
             else {
                 res.status(200).send(
-                    {message: "Replaced specific task"}
+                    {message: "Replaced specific task",
+                     data: task
+                    }
                 );
             }
         });
@@ -107,12 +114,16 @@ module.exports = function (router) {
         Task.remove({_id: req.params.id}, function(err, task) {
             if (err) {
                 res.status(404).send(
-                    {message: err}
+                    {message: err,
+                     data:[]
+                    }
                 );
             }
             else {
                 res.status(200).send(
-                    {message: "Task successfully deleted"}
+                    {message: "Task successfully deleted",
+                     data:[]
+                    }
                 );
             }
         });
