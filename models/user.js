@@ -3,8 +3,14 @@ var mongoose = require('mongoose');
 
 // Define our user schema
 var UserSchema = new mongoose.Schema({
-    name: String,
-    email: String,
+    name: {
+        type: String,
+        required: "You must enter your name"
+    },
+    email: {
+        type: String,
+        required: "Please enter a valid email address"
+    },
     pendingTasks: [String],
     dateCreated: {
         type: Date,
