@@ -121,6 +121,15 @@ module.exports = function (router) {
                     }
                 );
             }
+            
+            else if (writeOpResult.nMatched === 0) {
+                return res.status(404).send(
+                    {message: "user not found",
+                     data: []
+                    }
+                );
+            }
+
             else {
                 res.status(200).send(
                     {message: "Task successfully deleted",
