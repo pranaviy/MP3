@@ -7,9 +7,6 @@ module.exports = function (router) {
     
     taskRoute.get(function(req, res) {
         
-        //console.log(req.query);
-        //console.log(req.query.where)
-        
         par = {};
         if(req.query.where) {
             par.where = JSON.parse(req.query.where);
@@ -111,18 +108,18 @@ module.exports = function (router) {
     });
     
     taskIdRoute.delete(function(req, res) {
-        Task.remove({_id: req.params.id}, function(err, task) {
+        Task.deleteOne({_id: req.params.id}, function(err, task) {
             if (err) {
                 res.status(404).send(
                     {message: err,
-                     data:[]
+                     data:null
                     }
                 );
             }
             else {
                 res.status(200).send(
                     {message: "Task successfully deleted",
-                     data:[]
+                     data:null
                     }
                 );
             }

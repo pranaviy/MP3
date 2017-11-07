@@ -6,12 +6,14 @@
     "Pranavi Yalamanchili <pyalama2@illinois.edu>"
   ],
   "scripts": {
+    "build": "babel ./ --ignore ./node_modules/,./dist/ -d dist/ && cp package.json dist/",
     "start": "nodemon --exec node server.js"
   },
   "babel": {
     "presets": [
       "env",
-      "react"
+      "react",
+      "es2016"
     ]
   },
   "repository": {
@@ -19,6 +21,7 @@
     "url": "https://github.com/pranaviy/MP3.git"
   },
   "dependencies": {
+    "babel-preset-es2016": "^6.24.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "mongoose": "^4.13.0",

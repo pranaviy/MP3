@@ -111,14 +111,14 @@ module.exports = function (router) {
             if (err) {
                 res.status(404).send(
                     {message: err, 
-                     data:[]
+                     data:null
                     }
                 );
             }
             else {
                 res.status(200).send(
                     {message: "User successfully deleted",
-                     data:[]
+                     data:null
                     }
                 );
             }
