@@ -125,7 +125,9 @@ module.exports = function (router) {
             }
             else {
                 res.status(200).send(
-                    {message: "User successfully deleted"}
+                    {message: "User successfully deleted",
+                     data:null
+                    }
                 );
             }
         });

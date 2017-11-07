@@ -130,7 +130,9 @@ module.exports = function (router) {
             }
             else {
                 res.status(200).send(
-                    {message: "Task successfully deleted"}
+                    {message: "Task successfully deleted",
+                     data:null
+                    }
                 );
             }
         });
