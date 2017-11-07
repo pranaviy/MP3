@@ -6,7 +6,7 @@ module.exports = function (router) {
     var taskRoute = router.route('/tasks');
     
     taskRoute.get(function(req, res) {
-        
+        res.set({ 'Content-Type': 'application/json; charset=utf-8' });
         par = {};
         if(req.query.where) {
             par.where = JSON.parse(req.query.where);
@@ -47,6 +47,7 @@ module.exports = function (router) {
     });
     
     taskRoute.post(function(req, res) {
+        res.set({ 'Content-Type': 'application/json; charset=utf-8' });
         var new_task = new Task(req.body);
         console.log(new_task);
         new_task.save(function(err, task) {
@@ -70,6 +71,7 @@ module.exports = function (router) {
     var taskIdRoute = router.route('/tasks/:id');
     
     taskIdRoute.get(function(req, res) {
+        res.set({ 'Content-Type': 'application/json; charset=utf-8' });
         Task.findById(req.params.id, function(err, task) {
             if (!task) {
                 res.status(404).send(
@@ -89,7 +91,8 @@ module.exports = function (router) {
     });
     
     taskIdRoute.post(function(req, res) {
-        Task.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
+        res.set({ 'Content-Type': 'application/json; charset=utf-8' });
+        Task.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, task) {
             if (!task) {
                 res.status(404).send(
                     {message: "err",
@@ -108,7 +111,8 @@ module.exports = function (router) {
     });
     
     taskIdRoute.delete(function(req, res) {
-        Task.findOneAndRemove({_id: req.params.id}, function(err, task) {
+        res.set({ 'Content-Type': 'application/json; charset=utf-8' });
+        Task.findByIdAndRemove(req.params.id, function(err, task) {
             if (!task) {
                 res.status(404).send(
                     {message: "err",
