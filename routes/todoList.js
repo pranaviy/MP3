@@ -84,7 +84,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "Got specific task",
-                     data: task
+                     data: par.count ? task.length : task
                     }
                 );
             }

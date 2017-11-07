@@ -37,7 +37,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "OK",
-                     data: user
+                     data: par.count ? user.length : user  
                     }
                 );
             }
@@ -87,6 +87,7 @@ module.exports = function (router) {
     });
     
     userIdRoute.post(function(req, res) {
+        console.log(req.params);
         User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, user) {
             if (err) {
                 res.status(404).send(
