@@ -30,7 +30,7 @@ module.exports = function (router) {
             if (err) {
                 res.status(500).send(
                     {message: err,
-                     data: []
+                     data:null
                     }
                 );
             }
@@ -50,7 +50,7 @@ module.exports = function (router) {
             if (err) {
                 res.status(500).send(
                     {message: err,
-                     data:[]
+                     data:null
                     }
                 );
             }
@@ -72,14 +72,14 @@ module.exports = function (router) {
             if (err) {
                 res.status(404).send(
                     {message: "err",
-                     data: []
+                     data:null
                     }
                 );
             }
             else if (!user) {
                 res.status(404).send(
                     {message: "err",
-                     data:[]
+                     data:null
                     }
                 );
             }
@@ -98,7 +98,7 @@ module.exports = function (router) {
             if (err) {
                 res.status(404).send(
                     {message: "err",
-                     data:[]
+                     data:null
                     }
                 );
             }
@@ -119,14 +119,14 @@ module.exports = function (router) {
             if (err) {
                 res.status(404).send(
                     {message: "err", 
-                     data:[]
+                     data:null
                     }
                 );
             }
             else if (!user) {
                 res.status(404).send(
                     {message: "err",
-                     data:[]
+                     data:null
                     }
                 );
             }
