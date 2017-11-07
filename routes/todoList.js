@@ -71,7 +71,7 @@ module.exports = function (router) {
     
     taskIdRoute.get(function(req, res) {
         Task.findById(req.params.id, function(err, task) {
-            if (err) {
+            if (!task) {
                 res.status(404).send(
                     {message: "err",
                      data: []
@@ -90,9 +90,9 @@ module.exports = function (router) {
     
     taskIdRoute.post(function(req, res) {
         Task.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
-            if (err) {
+            if (!task) {
                 res.status(404).send(
-                    {message: err,
+                    {message: "err",
                      data: []
                     }
                 );
@@ -109,9 +109,9 @@ module.exports = function (router) {
     
     taskIdRoute.delete(function(req, res) {
         Task.findOneAndRemove({_id: req.params.id}, function(err, task) {
-            if (err) {
+            if (!task) {
                 res.status(404).send(
-                    {message: err,
+                    {message: "err",
                      data:null
                     }
                 );
