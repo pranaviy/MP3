@@ -71,7 +71,7 @@ module.exports = function (router) {
         User.findById(req.params.id, function(err, user) {
             if (!user) {
                 res.status(404).send(
-                    {message: err,
+                    {message: "err",
                      data: []
                     }
                 );
