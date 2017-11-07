@@ -69,7 +69,7 @@ module.exports = function (router) {
     //get, put, delete
     userIdRoute.get(function(req, res) {
         User.findById(req.params.id, function(err, user) {
-            if (!user) {
+            if (err) {
                 res.status(404).send(
                     {message: "err",
                      data: []
@@ -108,7 +108,7 @@ module.exports = function (router) {
     
     userIdRoute.delete(function(req, res) {
         User.findByIdAndRemove(req.params.id, function(err, user) {
-            if (!user) {
+            if (err) {
                 res.status(404).send(
                     {message: "err", 
                      data:[]
@@ -118,7 +118,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "User successfully deleted",
-                     data:user
+                     data:[]
                     }
                 );
             }
