@@ -73,7 +73,7 @@ module.exports = function (router) {
     taskIdRoute.get(function(req, res) {
         res.set({ 'Content-Type': 'application/json; charset=utf-8' });
         Task.findById(req.params.id, function(err, task) {
-            if (err) {
+            if (!task) {
                 res.status(404).send(
                     {message: "err",
                      data: []
@@ -94,7 +94,7 @@ module.exports = function (router) {
         console.log(res);
         res.set({ 'Content-Type': 'application/json; charset=utf-8' });
         Task.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, task) {
-            if (err) {
+            if (!task) {
                 res.status(404).send(
                     {message: "err",
                      data: []
@@ -114,7 +114,7 @@ module.exports = function (router) {
     taskIdRoute.delete(function(req, res) {
         res.set({ 'Content-Type': 'application/json; charset=utf-8' });
         Task.findByIdAndRemove(req.params.id, function(err, task) {
-            if (err) {
+            if (!task) {
                 res.status(404).send(
                     {message: "err",
                      data:[]
