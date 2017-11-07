@@ -42,7 +42,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "OK",
-                     data: task
+                     data: par.count ? task.length : task
                     }
                 );
             }
@@ -84,7 +84,7 @@ module.exports = function (router) {
             else {
                 res.status(200).send(
                     {message: "Got specific task",
-                     data: par.count ? task.length : task
+                     data: task
                     }
                 );
             }
