@@ -102,6 +102,13 @@ module.exports = function (router) {
                     }
                 );
             }
+            else if (!user) {
+                res.status(404).send(
+                    {message: "err",
+                     data:null
+                    }
+                );
+            }
             else {
                 res.status(200).send(
                     {message: "Replaced specific user", 
@@ -113,9 +120,7 @@ module.exports = function (router) {
     });
     
     userIdRoute.delete(function(req, res) {
-        
         User.findOneAndRemove(req.params.id, function(err, user) {
-            console.log(res);
             if (err) {
                 res.status(404).send(
                     {message: "err", 

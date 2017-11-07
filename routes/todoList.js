@@ -108,6 +108,13 @@ module.exports = function (router) {
                     }
                 );
             }
+            else if (!task) {
+                res.status(404).send(
+                    {message: "err",
+                     data:[]
+                    }
+                );
+            }
             else {
                 res.status(200).send(
                     {message: "Replaced specific task",
@@ -119,7 +126,6 @@ module.exports = function (router) {
     });
     
     taskIdRoute.delete(function(req, res) {
-        res.set({ 'Content-Type': 'application/json; charset=utf-8' });
         Task.findOneAndRemove(req.params.id, function(err, task) {
             if (err) {
                 res.status(404).send(
