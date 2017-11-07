@@ -69,15 +69,15 @@ module.exports = function (router) {
     //get, put, delete
     userIdRoute.get(function(req, res) {
         User.findById(req.params.id, function(err, user) {
-            if (err) {
-                res.status(200).send(
+            if (!user) {
+                res.status(404).send(
                     {message: err,
                      data: []
                     }
                 );
             }
             else {
-                res.status(404).send(
+                res.status(200).send(
                     {message: "Got specific user",
                      data: user
                     }
@@ -89,15 +89,15 @@ module.exports = function (router) {
     userIdRoute.post(function(req, res) {
         console.log(req.params);
         User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, user) {
-            if (err) {
-                res.status(200).send(
-                    {message: err,
+            if (!user) {
+                res.status(404).send(
+                    {message: "err",
                      data:[]
                     }
                 );
             }
             else {
-                res.status(404).send(
+                res.status(200).send(
                     {message: "Replaced specific user", 
                      data:user
                     }
@@ -107,16 +107,16 @@ module.exports = function (router) {
     });
     
     userIdRoute.delete(function(req, res) {
-        User.findOneAndRemove({_id: req.params.id}, function(err, user) {
-            if (err) {
-                res.status(200).send(
-                    {message: err, 
+        User.findByIdAndRemove(req.params.id, function(err, user) {
+            if (!user) {
+                res.status(404).send(
+                    {message: "err", 
                      data:null
                     }
                 );
             }
             else {
-                res.status(404).send(
+                res.status(200).send(
                     {message: "User successfully deleted",
                      data:null
                     }

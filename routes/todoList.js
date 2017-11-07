@@ -72,14 +72,14 @@ module.exports = function (router) {
     taskIdRoute.get(function(req, res) {
         Task.findById(req.params.id, function(err, task) {
             if (err) {
-                res.status(200).send(
+                res.status(404).send(
                     {message: "err",
                      data: []
                     }
                 );
             }
             else {
-                res.status(404).send(
+                res.status(200).send(
                     {message: "Got specific task",
                      data: task
                     }
@@ -91,14 +91,14 @@ module.exports = function (router) {
     taskIdRoute.post(function(req, res) {
         Task.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
             if (err) {
-                res.status(200).send(
+                res.status(404).send(
                     {message: err,
                      data: []
                     }
                 );
             }
             else {
-                res.status(404).send(
+                res.status(200).send(
                     {message: "Replaced specific task",
                      data: task
                     }
@@ -110,14 +110,14 @@ module.exports = function (router) {
     taskIdRoute.delete(function(req, res) {
         Task.findOneAndRemove({_id: req.params.id}, function(err, task) {
             if (err) {
-                res.status(200).send(
+                res.status(404).send(
                     {message: err,
                      data:null
                     }
                 );
             }
             else {
-                res.status(404).send(
+                res.status(200).send(
                     {message: "Task successfully deleted",
                      data:null
                     }
