@@ -108,7 +108,7 @@ module.exports = function (router) {
     });
     
     taskIdRoute.delete(function(req, res) {
-        Task.remove({_id: req.params.id}, function(err, task) {
+        Task.findOneAndRemove({_id: req.params.id}, function(err, task) {
             if (err) {
                 res.status(404).send(
                     {message: err,
