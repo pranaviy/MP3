@@ -90,9 +90,9 @@ module.exports = function (router) {
         });
     });
     
-    taskIdRoute.post(function(req, res) {
-        console.log(res);
+    taskIdRoute.put(function(req, res) {
         res.set({ 'Content-Type': 'application/json; charset=utf-8' });
+        console.log(req.params.id);
         Task.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, task) {
             if (err) {
                 res.status(404).send(
@@ -121,20 +121,9 @@ module.exports = function (router) {
                     }
                 );
             }
-            
-            else if (res.nMatched === 0) {
-                return res.status(404).send(
-                    {message: "task not found",
-                     data: []
-                    }
-                );
-            }
-
             else {
                 res.status(200).send(
-                    {message: "Task successfully deleted",
-                     data:task
-                    }
+                    {message: "Task successfully deleted"}
                 );
             }
         });

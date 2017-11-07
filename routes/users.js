@@ -86,20 +86,12 @@ module.exports = function (router) {
         });
     });
     
-    userIdRoute.post(function(req, res) {
-        console.log(req.params);
+    userIdRoute.put(function(req, res) {
         User.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, user) {
             if (err) {
                 res.status(404).send(
                     {message: "err",
                      data:[]
-                    }
-                );
-            }
-            else if (res.nMatched === 0) {
-                return res.status(404).send(
-                    {message: "user not found",
-                     data: []
                     }
                 );
             }
@@ -114,7 +106,9 @@ module.exports = function (router) {
     });
     
     userIdRoute.delete(function(req, res) {
+        
         User.findByIdAndRemove(req.params.id, function(err, user) {
+            console.log(res.nMatched);
             if (err) {
                 res.status(404).send(
                     {message: "err", 
@@ -124,9 +118,7 @@ module.exports = function (router) {
             }
             else {
                 res.status(200).send(
-                    {message: "User successfully deleted",
-                     data:[]
-                    }
+                    {message: "User successfully deleted"}
                 );
             }
         });
