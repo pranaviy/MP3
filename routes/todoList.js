@@ -113,7 +113,7 @@ module.exports = function (router) {
     
     taskIdRoute.delete(function(req, res) {
         res.set({ 'Content-Type': 'application/json; charset=utf-8' });
-        Task.findByIdAndRemove(req.params.id, function(err, task) {
+        Task.findOneAndRemove(req.params.id, function(err, task) {
             if (err) {
                 res.status(404).send(
                     {message: "err",

@@ -107,8 +107,8 @@ module.exports = function (router) {
     
     userIdRoute.delete(function(req, res) {
         
-        User.findByIdAndRemove(req.params.id, function(err, user) {
-            console.log(res.nMatched);
+        User.findOneAndRemove(req.params.id, function(err, user) {
+            console.log(res);
             if (err) {
                 res.status(404).send(
                     {message: "err", 
