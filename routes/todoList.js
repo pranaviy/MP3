@@ -117,14 +117,14 @@ module.exports = function (router) {
             if (err) {
                 res.status(404).send(
                     {message: "err",
-                     data:null
+                     data:[]
                     }
                 );
             }
             else {
                 res.status(200).send(
                     {message: "Task successfully deleted",
-                     data:null
+                     data:task
                     }
                 );
             }
