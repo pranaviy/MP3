@@ -6,14 +6,12 @@
     "Pranavi Yalamanchili <pyalama2@illinois.edu>"
   ],
   "scripts": {
-    "build": "babel ./ --ignore ./node_modules/,./dist/ -d dist/ && cp package.json dist/",
     "start": "nodemon --exec node server.js"
   },
   "babel": {
     "presets": [
       "env",
-      "react",
-      "es2016"
+      "react"
     ]
   },
   "repository": {

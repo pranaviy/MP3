@@ -71,7 +71,7 @@ module.exports = function (router) {
         User.findById(req.params.id, function(err, user) {
             if (err) {
                 res.status(404).send(
-                    {message: err,
+                    {message: "err",
                      data: []
                     }
                 );
@@ -91,7 +91,7 @@ module.exports = function (router) {
         User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, user) {
             if (err) {
                 res.status(404).send(
-                    {message: err,
+                    {message: "err",
                      data:[]
                     }
                 );
@@ -110,7 +110,7 @@ module.exports = function (router) {
         User.remove({_id: req.params.id}, function(err, user) {
             if (err) {
                 res.status(404).send(
-                    {message: err, 
+                    {message: "err", 
                      data:null
                     }
                 );

@@ -31,7 +31,7 @@ module.exports = function (router) {
         Task.find({}, [], par, function(err, task) {
             if (err) {
                 res.status(500).send(
-                    {message: err,
+                    {message: "err",
                      data: []
                     }
                 );
@@ -52,7 +52,7 @@ module.exports = function (router) {
         new_task.save(function(err, task) {
             if (err) {
                 res.status(500).send(
-                    {message: err, 
+                    {message: "err", 
                      data:[]
                     }
                 );
@@ -73,7 +73,7 @@ module.exports = function (router) {
         Task.findById(req.params.id, function(err, task) {
             if (err) {
                 res.status(404).send(
-                    {message: err,
+                    {message: "err",
                      data: []
                     }
                 );
@@ -108,7 +108,7 @@ module.exports = function (router) {
     });
     
     taskIdRoute.delete(function(req, res) {
-        Task.deleteOne({_id: req.params.id}, function(err, task) {
+        Task.remove({_id: req.params.id}, function(err, task) {
             if (err) {
                 res.status(404).send(
                     {message: err,
