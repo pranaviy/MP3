@@ -89,7 +89,7 @@ module.exports = function (router) {
     userIdRoute.post(function(req, res) {
         console.log(req.params);
         User.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, user) {
-            if (!user) {
+            if (err) {
                 res.status(404).send(
                     {message: "err",
                      data:[]

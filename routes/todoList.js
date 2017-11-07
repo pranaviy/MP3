@@ -94,7 +94,7 @@ module.exports = function (router) {
         console.log(res);
         res.set({ 'Content-Type': 'application/json; charset=utf-8' });
         Task.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, task) {
-            if (!task) {
+            if (err) {
                 res.status(404).send(
                     {message: "err",
                      data: []
