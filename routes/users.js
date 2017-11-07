@@ -76,6 +76,13 @@ module.exports = function (router) {
                     }
                 );
             }
+            else if (!user) {
+                res.status(404).send(
+                    {message: "err",
+                     data:[]
+                    }
+                );
+            }
             else {
                 res.status(200).send(
                     {message: "Got specific user",
